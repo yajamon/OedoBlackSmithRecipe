@@ -22,20 +22,31 @@ module.exports = function(grunt) {
         watch: {
             less: {
                 files: 'src/less/**/*.less',
-                tasks: ['less', 'csslint']
+                tasks: ['less2css']
             }
         },
 
         typescript: {
             build: {
+                src: ['src/ts/**/*.ts'],
+                options: {
+                    noImplicitAny: true,
+                }
+            }
+        },
+
+        copy: {
+            ts2js: {
                 expand: true,
                 cwd: 'src/ts/',
-                src: ['**/*.ts', '!node_modules/**/*.ts'],
+                src: ['**/*.js'],
                 dest: 'build/js/',
-                ext: '.js',
-                options: {
-                    noImplicitAny: true
-                }
+            }
+        },
+
+        clean: {
+            js_in_ts: {
+                src: 'src/ts/**/*.js'
             }
         }
 
@@ -46,9 +57,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-typescript');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
     // tasks
     grunt.registerTask('less2css', ['less', 'csslint']);
-    grunt.registerTask('default', ['less2css', 'typescript']);
+    grunt.registerTask('ts2js', ['typescript', 'copy:ts2js', 'clean:js_in_ts']);
+    grunt.registerTask('default', ['less2css', 'ts2js']);
 
 };
