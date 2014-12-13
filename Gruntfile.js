@@ -20,8 +20,8 @@ module.exports = function(grunt) {
         },
 
         watch: {
-            less2css: {
-                files: 'src/css/*.less',
+            less: {
+                files: 'src/less/**/*.less',
                 tasks: ['less', 'csslint']
             }
         },
@@ -48,6 +48,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-typescript');
 
     // tasks
-    grunt.registerTask('default', ['less', 'csslint', 'typescript']);
+    grunt.registerTask('less2css', ['less', 'csslint']);
+    grunt.registerTask('default', ['less2css', 'typescript']);
 
 };
