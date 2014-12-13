@@ -23,6 +23,10 @@ module.exports = function(grunt) {
             less: {
                 files: 'src/less/**/*.less',
                 tasks: ['less2css']
+            },
+            typescript: {
+                files: 'src/ts/**/*.ts',
+                tasks: ['ts2js']
             }
         },
 
