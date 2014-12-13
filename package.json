@@ -1,0 +1,22 @@
+{
+  "name": "OedoBlackSmithRecipe",
+  "version": "0.0.0",
+  "description": "OedoBlackSmithRecipe\r ====================",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://yajamon@github.com/yajamon/OedoBlackSmithRecipe.git"
+  },
+  "author": "yajamon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yajamon/OedoBlackSmithRecipe/issues"
+  },
+  "homepage": "https://github.com/yajamon/OedoBlackSmithRecipe",
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
+}
