@@ -27,7 +27,11 @@ module.exports = function(grunt) {
             typescript: {
                 files: 'src/ts/**/*.ts',
                 tasks: ['ts2js']
-            }
+            },
+            html: {
+                files: 'src/**/*.html',
+                tasks: ['copy:html'],
+            },
         },
 
         typescript: {
@@ -45,7 +49,13 @@ module.exports = function(grunt) {
                 cwd: 'src/ts/',
                 src: ['**/*.js'],
                 dest: 'build/js/',
-            }
+            },
+            html: {
+                expand: true,
+                cwd: 'src/',
+                src: ['**/*.html'],
+                dest: 'build/',
+            },
         },
 
         clean: {
@@ -67,6 +77,6 @@ module.exports = function(grunt) {
     // tasks
     grunt.registerTask('less2css', ['less', 'csslint']);
     grunt.registerTask('ts2js', ['typescript', 'copy:ts2js', 'clean:js_in_ts']);
-    grunt.registerTask('default', ['less2css', 'ts2js']);
+    grunt.registerTask('default', ['copy:html', 'less2css', 'ts2js']);
 
 };
